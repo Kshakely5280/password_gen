@@ -1,9 +1,13 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-const lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz".split("");
-const uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-const Numbers= "0123456789".split("");
+const lowercaseCharacters = arrayFromLowToHigh(65, 90)
+const uppercaseCharacters = arrayFromLowToHigh(97, 122)
+const Numbers= arrayFromLowToHigh(48, 57)
 const specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split("");
+
+
+
+
 
 
 // Write password to the #password input
@@ -14,8 +18,37 @@ function writePassword() {
   passwordText.value = password;
 }
 
+function arrayFromLowToHigh(low, high) {
+    const array = []
+    for (let i = low; i <= high; i++) {
+        array.push(i)
+        
+    }
+    return array
+}
+
+
+function continue() {
+    const result = confirm('true')
+    if (result == false) {
+        event.preventDefault()
+    }
+}
+
+
+
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword) {
+    event.preventDefault()
+    const characterAmount = characterAmountNumber.value
+    const includeUppercase = includeUppercaseElement.checked
+    const includeNumbers = includeNumbersElement.checked
+    const includeSymbols = includeSymbolsElement.checked
+    const password = generatePassword(characterAmount, includeUppercase, includeSymbols, includeNumbers)
+};
+
+
 
 
 
